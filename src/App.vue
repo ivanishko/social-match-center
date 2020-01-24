@@ -1,52 +1,46 @@
 <template>
   <div id="app">
-    <app-header></app-header>
-   <h1>{{msg}}</h1>
-    <ul v-for="match in matches">
-      <li>{{match.id}}. {{match.team1.translate}} - {{match.team2.translate}}</li>
-    </ul>
+
+    <Menu />
+
+    <main id="page-wrap">
+      <Header msg="Social Match Center" />
+
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-12">
+        <router-view>
+
+        </router-view>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+          <p>БАННЕР</p>
+        </div>
+
+      </div>
+    </div>
+    </main>
   </div>
+
 </template>
 
 <script>
-export default {
+  import Header from "./assets/components/Header";
+  import Menu from "./assets/components/Menu";
+  import 'bootstrap/dist/css/bootstrap.css'
+  import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+  export default {
   name: 'app',
+    components: {
+        Header,
+        Menu
+    },
   data () {
     return {
         msg: 'Social match center',
 
-        matches: [
-            {
-                "id" : 1,
-                "tournament": "1liga",
-                "ligue": "1zona",
-                "team1": {
-                    "name" : "Kuban",
-                    "totalScore:" : "2",
-                    "translate" : "Кубань"
-                },
-                "team2": {
-                    "name" : "Urojay",
-                    "totalScore:" : "2",
-                    "translate" : "Урожай"
-                },
-            },
-            {
-                "id" : 2,
-                "tournament": "1liga",
-                "ligue": "1zona",
-                "team1": {
-                    "name" : "Benec",
-                    "totalScore:" : "2",
-                    "translate" : "Венец"
-                },
-                "team2": {
-                    "name" : "Loko",
-                    "totalScore:" : "2",
-                    "translate" : "Локомотив"
-                },
-            }
-        ]
+
     }
   }
 }
@@ -64,6 +58,7 @@ export default {
 
 h1, h2 {
   font-weight: normal;
+  color: #2c3e50;
 }
 
 ul {
@@ -71,12 +66,10 @@ ul {
   padding: 0;
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 
 a {
   color: #42b983;
 }
+
+
 </style>

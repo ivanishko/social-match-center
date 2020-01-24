@@ -8,14 +8,39 @@
                 <span class="team2"><p>{{match.team2.name_translate}}</p> {{match.team2.loc_translate}}</span>
               </a>
           </div>
+
+    <h2>Product title</h2>
+    <div class="price">1000</div>
+    <hr>
+    <button class="btn btn-warning" @click="onMinus">-1</button>
+    <button class="btn btn-success" @click="onPlus">+1</button>
+    {{ cnt }}
+
   </div>
 </template>
 
 <script>
     export default {
         name: "Matches",
+        methods: {
+           onMinus() {
+                if(this.$store.state.cnt  > 1 ){
+                    this.$store.state.cnt--
+                }
+           },
+            onPlus(){
+                this.$store.state.cnt++
+            }
+        },
+        computed: {
+          cnt(){
+              return this.$store.state.cnt
+          }
+        },
         data() {
             return {
+
+
                 matches: [
                     {
                         "id" : 1,

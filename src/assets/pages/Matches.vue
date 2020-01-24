@@ -3,11 +3,10 @@
     <h1>Matches</h1>
             <div class="list-group match-items">
               <a v-for="match in matches" :key="match.id" :href="'../match/' + match.id" class="list-group-item list-group-item-action match-item">
-                <span class="team1">{{match.team1.translate}}</span>
+                <span class="team1"><p>{{match.team1.name_translate}}</p> {{match.team1.loc_translate}}</span>
                 <span class="count">{{match.team1["totalScore:"]}} - {{match.team2["totalScore:"]}}</span>
-                <span class="team2">{{match.team2.translate}}</span>
+                <span class="team2"><p>{{match.team2.name_translate}}</p> {{match.team2.loc_translate}}</span>
               </a>
-
           </div>
   </div>
 </template>
@@ -25,12 +24,15 @@
                         "team1": {
                             "name" : "Kuban",
                             "totalScore:" : "3",
-                            "translate" : "Кубань"
+                            "name_translate" : "Кубань",
+                            "loc_translate" : "Усть-Лабинск"
+
                         },
                         "team2": {
                             "name" : "Urojay",
                             "totalScore:" : "0",
-                            "translate" : "Урожай"
+                            "name_translate" : "Урожай",
+                            "loc_translate" : "Ивановская"
                         },
                     },
                     {
@@ -40,22 +42,25 @@
                         "team1": {
                             "name" : "Benec",
                             "totalScore:" : "2",
-                            "translate" : "Венец"
+                            "name_translate" : "Венец",
+                            "loc_translate" : "Гулькевичи"
                         },
                         "team2": {
                             "name" : "Loko",
                             "totalScore:" : "1",
-                            "translate" : "Локомотив"
+                            "name_translate" : "Локомотив",
+                            "loc_translate" : "Кропоткин"
                         },
                     }
                 ]
+
             }
         }
 
     }
 </script>
 
-<style>
+<style lang="scss">
   .match-items {
     display: flex;
     flex-direction: column;
@@ -64,14 +69,23 @@
   .match-item {
     display: flex;
     justify-content: space-between;
+
   }
   .team1, .team2, .count {
-    display: flex;
-    border: 1px solid #2c3e50;
-    flex-grow: 1;
-align-items: center
+    display: block;
+    //border: 1px solid #2c3e50;
+    width: 33%;
+    align-items: center;
+
+    p {
+      margin-bottom: 0;
+    }
+
   }
+
+
+
   .count {
-    font-size: 40px;
+    font-size: 36px;
   }
 </style>

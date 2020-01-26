@@ -10,37 +10,58 @@
           </div>
 
     <h2>Product title</h2>
-    <div class="price">1000</div>
+    <div class="price"> Price: {{price}}</div>
+    <div class="total">Total: {{total}}</div>
+    <div class="total">Count:  {{ cnt }}</div>
     <hr>
-    <button class="btn btn-warning" @click="onMinus">-1</button>
-    <button class="btn btn-success" @click="onPlus">+1</button>
-    {{ cnt }}
+    <button class="btn btn-warning" @click="minus">-1</button>
+    <button class="btn btn-success" @click="plus">+1</button>
+    <button class="btn btn-primary"
+            :disabled="btnDisabled"
+            @click="send"
+    >Order now</button>
+    <div class="alert alert-success" v-if="orderState == 'done'">
+      Your order is done!
+    </div>
+
 
   </div>
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
+  import {mapMutations} from 'vuex';
     export default {
         name: "Matches",
         methods: {
-           onMinus() {
-                if(this.$store.state.cnt  > 1 ){
-                    this.$store.state.cnt--
-                }
-           },
-            onPlus(){
-                this.$store.state.cnt++
-            }
+            ...mapMutations([
+                'minus',
+                'plus',
+                'send'
+            ])
+           // onMinus() {
+           //     this.$store.commit('minus');
+           //
+           // },
+           //  onPlus(){
+           //      this.$store.commit('plus');
+           //  }
+
         },
+
         computed: {
-          cnt(){
-              return this.$store.state.cnt
-          }
+            ...mapGetters([
+                'cnt',
+                'price',
+                'total',
+                'orderState'
+            ]),
+            btnDisabled() {
+                return this.cnt < 1;
+            }
         },
         data() {
             return {
-
-
                 matches: [
                     {
                         "id" : 1,
@@ -112,5 +133,8 @@
 
   .count {
     font-size: 36px;
+  }
+  .alert {
+    margin: 10px;
   }
 </style>

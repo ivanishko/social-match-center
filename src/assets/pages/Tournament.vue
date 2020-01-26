@@ -1,10 +1,15 @@
 <template>
-    <p>Tournament</p>
+    <p>Tournament - {{id}}</p>
 </template>
 
 <script>
     export default {
-        name: "Tournament"
+        name: "Tournament",
+        computed: {
+            id() {
+                return this.$route.params.id;
+            }
+        }
     }
 </script>
 

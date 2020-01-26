@@ -39,13 +39,6 @@
                 'plus',
                 'send'
             ])
-           // onMinus() {
-           //     this.$store.commit('minus');
-           //
-           // },
-           //  onPlus(){
-           //      this.$store.commit('plus');
-           //  }
 
         },
 
@@ -54,7 +47,9 @@
                 'cnt',
                 'price',
                 'total',
-                'orderState'
+                'orderState',
+                'matches'
+
             ]),
             btnDisabled() {
                 return this.cnt < 1;
@@ -62,43 +57,7 @@
         },
         data() {
             return {
-                matches: [
-                    {
-                        "id" : 1,
-                        "tournament": "1liga",
-                        "ligue": "1zona",
-                        "team1": {
-                            "name" : "Kuban",
-                            "totalScore:" : "3",
-                            "name_translate" : "Кубань",
-                            "loc_translate" : "Усть-Лабинск"
 
-                        },
-                        "team2": {
-                            "name" : "Urojay",
-                            "totalScore:" : "0",
-                            "name_translate" : "Урожай",
-                            "loc_translate" : "Ивановская"
-                        },
-                    },
-                    {
-                        "id" : 2,
-                        "tournament": "1liga",
-                        "ligue": "1zona",
-                        "team1": {
-                            "name" : "Benec",
-                            "totalScore:" : "2",
-                            "name_translate" : "Венец",
-                            "loc_translate" : "Гулькевичи"
-                        },
-                        "team2": {
-                            "name" : "Loko",
-                            "totalScore:" : "1",
-                            "name_translate" : "Локомотив",
-                            "loc_translate" : "Кропоткин"
-                        },
-                    }
-                ]
 
             }
         }

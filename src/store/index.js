@@ -7,7 +7,7 @@ export const store = new Vuex.Store({
    state: {
      cnt: 0,
      price: 1000,
-     orderState: null
+     orderState: null,
    },
   mutations: {
       minus(state){
@@ -34,9 +34,7 @@ export const store = new Vuex.Store({
     },
       orderState(state){
       return state.orderState;
-    }
-  },
-  data(){
+    },
 
   }
 });

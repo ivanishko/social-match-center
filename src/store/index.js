@@ -122,6 +122,19 @@ export const store = new Vuex.Store({
       matches(state){
         return state.matches
     },
+    matchesMap(state){
+        let matchesMap = {};
+
+        for (let i = 0; i < state.matches.length; i++){
+          let match = state.matches[i];
+          matchesMap[match.id] = match;
+        }
+        return matchesMap;
+    },
+
+      item: (state,  getters) => (id) => {
+      return getters.matchesMap[id];
+    },
     tournaments(state){
       return state.tournaments
     },

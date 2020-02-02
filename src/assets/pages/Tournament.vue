@@ -1,5 +1,8 @@
 <template>
+  <div>
     <p>Tournament - {{id}}</p>
+    <router-link :to="{name: 'tournaments'}">Back to tournaments list</router-link>
+  </div>
 </template>
 
 <script>

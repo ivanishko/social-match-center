@@ -5,7 +5,6 @@
         <span class="count">{{match.team1["totalScore:"]}} - {{match.team2["totalScore:"]}}</span>
         <span class="team2"><p>{{match.team2.name_translate}}</p> {{match.team2.loc_translate}}</span>
     </div>
-
     <router-link :to="{name: 'matches'}">Back to match list</router-link>
   </div>
 

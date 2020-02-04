@@ -9,9 +9,11 @@
       <div class="container">
       <div class="row">
         <div class="col-lg-8 col-sm-12">
-        <router-view>
+            <router-view>
 
-        </router-view>
+            </router-view>
+
+
         </div>
         <div class="col-lg-4 col-sm-12">
           <p>БАННЕР</p>

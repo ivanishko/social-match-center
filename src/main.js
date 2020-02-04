@@ -3,13 +3,17 @@ import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 import {router} from './assets/router.js'
-
 import {store} from './store/'
 
-// Install BootstrapVue
+import VueResource from 'vue-resource'
+
+
 Vue.use(BootstrapVue);
-// Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
+
+Vue.use(VueResource);
+
+Vue.http.options.root = 'http://192.168.64.2/dashboard/api/';
 
 
 new Vue({

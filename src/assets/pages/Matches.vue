@@ -34,6 +34,14 @@
     export default {
         name: "Matches",
 
+        created(){
+            this.$http.get('matches.php')
+                .then(response => response.json())
+                .then(data  => {
+                    console.log(data)
+                });
+        },
+
         methods: {
             ...mapMutations([
                 'minus',

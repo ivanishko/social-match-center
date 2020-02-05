@@ -13,33 +13,37 @@ export const store = new Vuex.Store({
          "id": 1,
          "tournament": "1liga",
          "ligue": "1zona",
+         match_status: "Не начался",
          "team1": {
            "name": "Kuban",
-           "totalScore:": "3",
+           "totalScore": "0",
            "name_translate": "Кубань",
            "loc_translate": "Усть-Лабинск"
 
          },
          "team2": {
            "name": "Urojay",
-           "totalScore:": "0",
+           "totalScore": "0",
            "name_translate": "Урожай",
            "loc_translate": "Ивановская"
          },
+
+
        },
        {
          "id": 2,
          "tournament": "1liga",
          "ligue": "1zona",
+         match_status: "Не начался",
          "team1": {
            "name": "Benec",
-           "totalScore:": "2",
+           "totalScore": "0",
            "name_translate": "Венец",
            "loc_translate": "Гулькевичи"
          },
          "team2": {
            "name": "Loko",
-           "totalScore:": "1",
+           "totalScore": "0",
            "name_translate": "Локомотив",
            "loc_translate": "Кропоткин"
          },
@@ -104,7 +108,8 @@ export const store = new Vuex.Store({
      },
       send(state){
        state.orderState = 'done';
-    }
+    },
+
   },
   getters: {
       cnt(state) {
@@ -122,20 +127,18 @@ export const store = new Vuex.Store({
       matches(state){
         return state.matches
     },
-    matchesMap(state){
+      matchesMap(state){
         let matchesMap = {};
-
         for (let i = 0; i < state.matches.length; i++){
           let match = state.matches[i];
           matchesMap[match.id] = match;
         }
         return matchesMap;
     },
-
       item: (state,  getters) => (id) => {
       return getters.matchesMap[id];
     },
-    tournaments(state){
+      tournaments(state){
       return state.tournaments
     },
 

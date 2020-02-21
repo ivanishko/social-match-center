@@ -1,7 +1,6 @@
 <template>
 <header>
   <div class="header">
-    <h2>{{msg}}</h2>
   </div>
 </header>
 </template>

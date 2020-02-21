@@ -4,7 +4,7 @@
     <Menu />
 
     <main id="page-wrap">
-      <Header msg="Social Match Center" />
+<!--      <Header msg="Social Match Center" />-->
 
       <div class="container">
       <div class="row">

@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 
 import Matches from './pages/Matches'
 import Match from './pages/Match'
+import Login from './pages/Login'
 import Tournaments from './pages/Tournaments'
 import Tournament from './pages/Tournament'
 import E404 from './pages/E404'
@@ -18,6 +19,11 @@ const routes = [
     name: 'matches',
     path: '/matches',
     component: Matches
+  },
+  {
+    name: 'login',
+    path: '/login',
+    component: Login
   },
   {
     name: 'match',

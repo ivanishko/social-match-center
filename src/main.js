@@ -2,6 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
+import Buefy from 'buefy';
+import 'buefy/dist/buefy.css';
+
+
+
 import {router} from './assets/router.js'
 import {store} from './store/'
 
@@ -12,7 +17,7 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
 Vue.use(VueResource);
-
+Vue.use(Buefy);
 Vue.http.options.root = 'http://192.168.64.2/dashboard/api/';
 
 

@@ -1,0 +1,104 @@
+{
+  "matches": [
+    {
+      "id": 1,
+      "datetime": "2020-04-01T16:00:55.255Z",
+      "tournament": "1liga",
+      "ligue": "1zona",
+      "match_status": "1Т",
+      "team1": {
+        "name": "Kuban2",
+        "totalScore": "0",
+        "name_translate": "Кубань2",
+        "local": "Усть-Лабинск"
+      },
+      "team2": {
+        "name": "Urojay",
+        "totalScore": "0",
+        "name_translate": "Урожай",
+        "local": "Ивановская"
+      }
+    },
+    {
+      "id": 2,
+      "datetime": "2020-04-01T16:00:55.255Z",
+      "tournament": "1liga",
+      "ligue": "1zona",
+      "match_status": "--",
+      "team1": {
+        "name": "Benec",
+        "totalScore": "0",
+        "name_translate": "Венец",
+        "local": "Гулькевичи"
+      },
+      "team2": {
+        "name": "Loko",
+        "totalScore": "0",
+        "name_translate": "Локомотив",
+        "local": "Кропоткин"
+      }
+    }
+  ],
+  "tournaments": [
+    {
+      "id":1,
+      "name": "liga1",
+      "local": "zona1",
+      "name_translate": "1 лига",
+      "loc_translate": "1 зона",
+      "region": "Krasnodarsky kray",
+      "reg_translate": "Краснодарский край"
+    },
+    {
+      "id":2,
+      "name": "liga1",
+      "local": "zona2",
+      "name_translate": "1 лига",
+      "loc_translate": "2 зона",
+      "region": "Krasnodarsky kray",
+      "reg_translate": "Краснодарский край"
+    },
+    {
+      "id":3,
+      "name": "liga1",
+      "local": "zona3",
+      "name_translate": "1 лига",
+      "loc_translate": "3 зона",
+      "region": "Krasnodarsky kray",
+      "reg_translate": "Краснодарский край"
+    },
+    {
+      "id":4,
+      "name": "liga1",
+      "local": "zona4",
+      "name_translate": "1 лига",
+      "loc_translate": "4 зона",
+      "region": "Krasnodarsky kray",
+      "reg_translate": "Краснодарский край"
+    },
+    {
+      "id":5,
+      "name": "vishaya",
+      "local":  "",
+      "name_translate": "Высшая лига",
+      "loc_translate": "",
+      "region": "Krasnodarsky kray",
+      "reg_translate": "Краснодарский край"
+    }
+  ],
+
+  "users":[
+    {
+      "id": 1,
+      "login": "writer@mail.com",
+      "password": 123456,
+      "role": "writer"
+    },
+    {
+      "id": 2,
+      "login": "reader@mail.com",
+      "password": 123456,
+      "role": "reader"
+    }
+  ]
+}

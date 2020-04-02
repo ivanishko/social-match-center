@@ -8,20 +8,25 @@
 
       <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-sm-12">
+        <div class="col-lg-12 col-sm-12">
             <router-view>
 
             </router-view>
 
 
         </div>
-        <div class="col-lg-4 col-sm-12">
-          <p>БАННЕР</p>
-        </div>
+
 
       </div>
     </div>
     </main>
+      <footer class="footer">
+          <div class="content has-text-centered">
+              <p>
+                  <strong>Social Match Center</strong>
+              </p>
+          </div>
+      </footer>
   </div>
 
 </template>
@@ -49,29 +54,45 @@
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-  color: #2c3e50;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+    /*body {*/
+        /*margin: 0 auto;*/
+        /*max-width: 375px;*/
+    /*}*/
+    #app {
 
 
-a {
-  color: #42b983;
-}
 
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        margin-top: 60px;
+        font-size: 12px;
+        .container {
+            margin: 0 auto;
+
+        }
+
+
+    }
+
+    h1, h2 {
+      font-weight: bold;
+        text-align: center;
+      color: #2c3e50;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    a {
+      color: #42b983;
+    }
+
+    .datetime {
+        white-space: pre-line;
+        color: #777;
+        font-size: 11px;
+        font-weight: bold;
+        text-align: center;
+    }
 
 </style>

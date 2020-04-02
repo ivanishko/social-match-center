@@ -1,8 +1,8 @@
 <template>
   <Push>
-    <a v-for="item in items" id="item.home" :href="item.href">
+    <router-link v-for="item in items" id="item.home" :to="item.href">
       <span>{{item.link}}</span>
-    </a>
+    </router-link>
   </Push>
 </template>
 
@@ -14,25 +14,32 @@
         data() {
           return {
                 items: [
-                    {
-                    "id": "home",
-                    "link": "Home",
-                    "href": "/"
-                  },
-                  {
+                      {
                       "id": "home",
-                      "link": "Matches",
-                      "href": "/matches"
-                  },
-                  {
-                      "id": "tournaments",
-                      "link": "Tournaments",
-                      "href": "/tournaments"
-                  },
-
+                      "link": "Home",
+                      "href": "/"
+                    },
+                    {
+                        "id": "home",
+                        "link": "Matches",
+                        "href": "/matches"
+                    },
+                    {
+                        "id": "tournaments",
+                        "link": "Tournaments",
+                        "href": "/tournaments"
+                    },
+                    {
+                        "id": "login",
+                        "link": "Login",
+                        "href": "/login"
+                    },
               ]
-
-
+          }
+        },
+        computed: {
+          isLoginned() {
+              return true
           }
         },
         components: {

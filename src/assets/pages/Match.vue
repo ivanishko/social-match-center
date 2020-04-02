@@ -2,34 +2,40 @@
   <div>
     <router-link :to="{name: 'matches'}">Back to match list</router-link>
 
-    <div class="match-item border">
-        <span class="team1 border"><p>{{matchItem.team1name}}</p>
-          <p>{{matchItem.team1.loc_translate}}</p>
+    <div class="match-item">
+
+        <span class="team1 ">
+          <p>{{matchItem.team1.name_translate}}</p>
+          <p>{{matchItem.team1.local}}</p>
         </span>
-        <div class="count border">
+        <div class="count ">
           <div v-show="editable" class="buttons">
             <div class="button_up">
-              <button class="edit_button btn btn-success" @click="up1">up</button>
+              <b-button class="edit_button btn btn-success" @click="up1">up</b-button>
             </div>
             <div class="button_up">
-              <button class="edit_button btn btn-success" @click="up2">up</button>
+              <b-button class="edit_button btn btn-success" @click="up2">up</b-button>
             </div>
           </div>
 
           <div class="count__items">
-            <span>{{matchItem.team1["totalScore"]}} - {{matchItem.team2["totalScore"]}}</span>
+            <span class="datetime">{{matchItem.datetime | filterTime}}</span>
+            <span>{{matchItem.team1.totalScore}} - {{matchItem.team2.totalScore}}</span>
             <span class="match_status">{{matchItem.match_status}}</span>
           </div>
           <div v-show="editable" class="buttons">
             <div class="button_down">
-              <button class="edit_button btn btn-danger"  :disabled="matchItem.team1['totalScore'] == 0" @click="down1">dw</button>
+              <b-button class="edit_button btn btn-danger"  :disabled="matchItem.team1['totalScore'] === 0" @click="down1">dw</b-button>
             </div>
             <div class="button_down">
-              <button class="edit_button btn btn-danger"  :disabled="matchItem.team2['totalScore'] == 0" @click="down2">dw</button>
+              <b-button class="edit_button btn btn-danger"  :disabled="matchItem.team2['totalScore'] === 0" @click="down2">dw</b-button>
             </div>
           </div>
         </div>
-      <span class="team2 border"><p>{{matchItem.team2.name_translate}}</p><p> {{matchItem.team2.loc_translate}} </p></span>
+      <span class="team2 ">
+        <p>{{matchItem.team2.name_translate}}</p>
+        <p> {{matchItem.team2.local}} </p>
+      </span>
     </div>
     <div v-show="editable" class="statuses">
       <label for="not_started">Не начался<input id="not_started" v-model="match_status" type="radio" name="field" value="not_started" @click="checkS('not_started')"></label>
@@ -38,8 +44,8 @@
       <label for="2time">2 тайм<input id="2time" v-model="match_status" type="radio" name="field" value="2time" @click="checkS('2time')"></label>
       <label for="finished">Окончен<input id="finished" v-model="match_status" type="radio" name="field" value="finished" @click="checkS('finished')"></label>
     </div>
-    <button v-if="!editable" class="edit_button btn btn-primary" @click="editable = !editable" >Править</button>
-    <button v-else class="edit_button btn btn-primary" @click="editable = !editable" >Готово</button>
+    <b-button v-if="isRole == 'writer' && !editable"  @click="editClick" type="is-warning" expanded>Править</b-button>
+    <b-button v-if="editable" type="is-success" @click="editClick" expanded>Готово</b-button>
   </div>
 
 </template>
@@ -50,33 +56,67 @@
 
     export default {
         name: "Match",
-        data(){
+        data() {
             return {
                 editable: false,
-                match_status: ""
+                match_status: "",
+                inEdit: false
             }
+        },
+        created() {
+            console.log(3);
+            this.$store.dispatch('match/loadMatch',this.id);
         },
         computed: {
             id() {
                 return this.$route.params.id;
             },
-            matchItem(){
-                return this.$store.getters['matches/item'](this.id);
-            },
-            ...mapGetters('matches',{
-                // matchItem: 'item'
+            ...mapGetters('match',{
+                matchItem: 'item'
+            }),
+            // matchItem() {
+            //     return this.$store.getters['match/item'];
+            // },
+            ...mapGetters('users', {
+                isRole: 'isRole'
             }),
 
         },
-            methods: {
-                ...mapActions('matches', {
-                        up1: 'upPoint1',
-                        up2: 'upPoint2',
-                        down1 :'downPoint1',
-                        down2 :'downPoint2',
-                        checkS: 'checkStatus'
-                }),
+        methods: {
+            ...mapActions('match', {
+                up1: 'upPoint1',
+                up2: 'upPoint2',
+                down1: 'downPoint1',
+                down2: 'downPoint2',
+                checkS: 'checkStatus',
+                load: 'loadMatch'
+            }),
+
+            editClick: function () {
+                this.editable = !this.editable;
             }
+        },
+        filters: {
+            filterTime: function (d) {
+                let date = new Date(d);
+                let dd = date.getDate();
+                if (dd < 10) dd = '0' + dd;
+
+                let mm = date.getMonth() + 1;
+                if (mm < 10) mm = '0' + mm;
+
+                let yy = date.getFullYear() % 100;
+                if (yy < 10) yy = '0' + yy;
+
+                let hh = date.getHours() ;
+                if (hh < 10) hh = '0' + hh;
+
+                let mi = date.getHours() ;
+                if (mi < 10) mi = '0' + mi;
+
+                return dd + '.' + mm + '.' + yy + ' ' + hh + ':' + mi;
+            }
+        }
     }
 </script>
 
@@ -84,6 +124,7 @@
   .match-item {
     display: flex;
     justify-content: space-between;
+    min-height: 175px;
 
   }
   .team1, .team2, .count {
@@ -109,7 +150,7 @@
   .count {
     display: flex;
     flex-direction: column;
-    height: 130px;
+
     align-items: center;
     justify-content: center;
     &__items {
@@ -122,12 +163,12 @@
       color: red;
       line-height: 0;
       margin: 0;
+      text-align: center;
 
   }
 
   }
   .edit_button {
-    width: 75px;
     height: 25px;
     margin: 5px;
     line-height: 0;
@@ -135,6 +176,10 @@
 
   }
   .statuses{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-content: space-between;
     label {
       display: inline-block;
       border-radius: 3px;

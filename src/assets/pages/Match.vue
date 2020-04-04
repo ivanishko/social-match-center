@@ -1,9 +1,7 @@
 <template>
   <div>
     <router-link :to="{name: 'matches'}">Back to match list</router-link>
-
     <div class="match-item">
-
         <span class="team1 ">
           <p>{{matchItem.team1.name_translate}}</p>
           <p>{{matchItem.team1.local}}</p>
@@ -19,9 +17,12 @@
           </div>
 
           <div class="count__items">
-            <span class="datetime">{{matchItem.datetime | filterTime}}</span>
-            <span>{{matchItem.team1.totalScore}} - {{matchItem.team2.totalScore}}</span>
-            <span class="match_status">{{matchItem.match_status}}</span>
+            <span class="datetime">{{matchItem.datetime | formatDateTime}}</span>
+            <span v-if="isTime || isProgress || isFulltime">{{matchItem.team1.totalScore}} - {{matchItem.team2.totalScore}}</span>
+            <span v-else> &nbsp; -  &nbsp; </span>
+
+            <span class="match_status" :class="{inprogress : isProgress }">{{matchItem.match_status | formatStatus}} <span v-if="isTime" id="blink"> '</span></span>
+
           </div>
           <div v-show="editable" class="buttons">
             <div class="button_down">
@@ -34,7 +35,7 @@
         </div>
       <span class="team2 ">
         <p>{{matchItem.team2.name_translate}}</p>
-        <p> {{matchItem.team2.local}} </p>
+        <p>{{matchItem.team2.local}}</p>
       </span>
     </div>
     <div v-show="editable" class="statuses">
@@ -44,8 +45,47 @@
       <label for="2time">2 тайм<input id="2time" v-model="match_status" type="radio" name="field" value="2time" @click="checkS('2time')"></label>
       <label for="finished">Окончен<input id="finished" v-model="match_status" type="radio" name="field" value="finished" @click="checkS('finished')"></label>
     </div>
-    <b-button v-if="isRole == 'writer' && !editable"  @click="editClick" type="is-warning" expanded>Править</b-button>
-    <b-button v-if="editable" type="is-success" @click="editClick" expanded>Готово</b-button>
+    <div class="buttons">
+      <b-button v-if="isRole == 'writer' && !editable"  @click="editClick" type="is-warning" expanded>Править</b-button>
+      <b-button v-if="editable" type="is-success" @click="editClick" expanded>Готово</b-button>
+    </div>
+
+
+    <b-tabs
+            v-model="activeTab"
+            type="is-toggle"
+            expanded
+            :animated="false"
+            :size="is-small"
+    >
+      <b-tab-item label="События">
+        Lorem ipsum dolor sit amet.
+      </b-tab-item>
+
+      <b-tab-item label="Прогнозы">
+        Lorem <br>
+        ipsum <br>
+        dolor <br>
+        sit <br>
+        amet.
+      </b-tab-item>
+
+      <b-tab-item :visible="showBooks" label="Прогнозы">
+        What light is light, if Silvia be not seen? <br>
+        What joy is joy, if Silvia be not by— <br>
+        Unless it be to think that she is by <br>
+        And feed upon the shadow of perfection? <br>
+        Except I be by Silvia in the night, <br>
+        There is no music in the nightingale.
+      </b-tab-item>
+
+      <b-tab-item label="Обсуждение" disabled>
+        Nunc nec velit nec libero vestibulum eleifend.
+        Curabitur pulvinar congue luctus.
+        Nullam hendrerit iaculis augue vitae ornare.
+        Maecenas vehicula pulvinar tellus, id sodales felis lobortis eget.
+      </b-tab-item>
+    </b-tabs>
   </div>
 
 </template>
@@ -60,7 +100,8 @@
             return {
                 editable: false,
                 match_status: "",
-                inEdit: false
+                inEdit: false,
+                showBooks: false
             }
         },
         created() {
@@ -72,14 +113,14 @@
                 return this.$route.params.id;
             },
             ...mapGetters('match',{
-                matchItem: 'item'
+                matchItem: 'item',
+                isProgress: 'progress',
+                isTime: 'time',
+                isFulltime: 'fulltime',
             }),
-            // matchItem() {
-            //     return this.$store.getters['match/item'];
-            // },
             ...mapGetters('users', {
                 isRole: 'isRole'
-            }),
+            })
 
         },
         methods: {
@@ -95,27 +136,6 @@
             editClick: function () {
                 this.editable = !this.editable;
             }
-        },
-        filters: {
-            filterTime: function (d) {
-                let date = new Date(d);
-                let dd = date.getDate();
-                if (dd < 10) dd = '0' + dd;
-
-                let mm = date.getMonth() + 1;
-                if (mm < 10) mm = '0' + mm;
-
-                let yy = date.getFullYear() % 100;
-                if (yy < 10) yy = '0' + yy;
-
-                let hh = date.getHours() ;
-                if (hh < 10) hh = '0' + hh;
-
-                let mi = date.getHours() ;
-                if (mi < 10) mi = '0' + mi;
-
-                return dd + '.' + mm + '.' + yy + ' ' + hh + ':' + mi;
-            }
         }
     }
 </script>
@@ -125,6 +145,7 @@
     display: flex;
     justify-content: space-between;
     min-height: 175px;
+
 
   }
   .team1, .team2, .count {
@@ -145,12 +166,12 @@
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
+
   }
 
   .count {
     display: flex;
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
     &__items {
@@ -158,47 +179,46 @@
       display: flex;
       flex-direction: column;
     }
-    .match_status{
+    .match_status {
       font-size: 12px;
-      color: red;
+
       line-height: 0;
       margin: 0;
       text-align: center;
-
-  }
-
+    }
+    .inprogress {
+      color: red;
+    }
   }
   .edit_button {
     height: 25px;
     margin: 5px;
     line-height: 0;
     font-size: 12px;
-
   }
   .statuses{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    justify-content: space-between;
     label {
       display: inline-block;
       border-radius: 3px;
       width: 18%;
+      font-size: 11px;
       background: #42b983;
       color: aliceblue;
       text-align: center;
       cursor: pointer;
-
     }
     input {
       display: none;
       &:checked {
         background: #2c3e50;
       }
-
     }
-
   }
+
+
 
 
 </style>

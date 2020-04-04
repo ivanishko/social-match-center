@@ -14,8 +14,6 @@ export default {
     loadMatches(state, data) {
       state.matches = data;
     },
-
-
 },
   getters: {
       matchesMap(state) {
@@ -45,6 +43,7 @@ export default {
                   store.commit('loadMatches',response.data)
                 })
     },
+
 
 
 

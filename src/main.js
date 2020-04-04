@@ -5,6 +5,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import Buefy from 'buefy';
 import 'buefy/dist/buefy.css';
 
+import "./assets/filters"
 
 
 import {router} from './assets/router.js'

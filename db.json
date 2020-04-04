@@ -1,11 +1,11 @@
 {
   "matches": [
     {
-      "id": 1,
-      "datetime": "2020-04-01T16:00:55.255Z",
+      "id": 0,
+      "datetime": "2020-04-01T16:00:55.255+03:00",
       "tournament": "1liga",
       "ligue": "1zona",
-      "match_status": "1Т",
+      "match_status": "ns",
       "team1": {
         "name": "Kuban2",
         "totalScore": "0",
@@ -20,11 +20,30 @@
       }
     },
     {
-      "id": 2,
-      "datetime": "2020-04-01T16:00:55.255Z",
+      "id": 1,
+      "datetime": "2020-04-01T16:00:55.255+03:00",
       "tournament": "1liga",
       "ligue": "1zona",
-      "match_status": "--",
+      "match_status": "1t",
+      "team1": {
+        "name": "Kuban2",
+        "totalScore": "2",
+        "name_translate": "Кубань2",
+        "local": "Усть-Лабинск"
+      },
+      "team2": {
+        "name": "Urojay",
+        "totalScore": "0",
+        "name_translate": "Урожай",
+        "local": "Ивановская"
+      }
+    },
+    {
+      "id": 2,
+      "datetime": "2020-04-01T16:00:55.255+03:00",
+      "tournament": "1liga",
+      "ligue": "1zona",
+      "match_status": "2t",
       "team1": {
         "name": "Benec",
         "totalScore": "0",
@@ -33,7 +52,45 @@
       },
       "team2": {
         "name": "Loko",
-        "totalScore": "0",
+        "totalScore": "3",
+        "name_translate": "Локомотив",
+        "local": "Кропоткин"
+      }
+    },
+    {
+      "id": 3,
+      "datetime": "2020-04-01T16:00:55.255+03:00",
+      "tournament": "1liga",
+      "ligue": "1zona",
+      "match_status": "ht",
+      "team1": {
+        "name": "Benec",
+        "totalScore": "2",
+        "name_translate": "Венец",
+        "local": "Гулькевичи"
+      },
+      "team2": {
+        "name": "Loko",
+        "totalScore": "2",
+        "name_translate": "Локомотив",
+        "local": "Кропоткин"
+      }
+    },
+    {
+      "id": 4,
+      "datetime": "2020-04-01T16:00:55.255+03:00",
+      "tournament": "1liga",
+      "ligue": "1zona",
+      "match_status": "ft",
+      "team1": {
+        "name": "Benec",
+        "totalScore": "2",
+        "name_translate": "Венец",
+        "local": "Гулькевичи"
+      },
+      "team2": {
+        "name": "Loko",
+        "totalScore": "3",
         "name_translate": "Локомотив",
         "local": "Кропоткин"
       }

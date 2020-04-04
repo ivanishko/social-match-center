@@ -20,13 +20,7 @@
       </div>
     </div>
     </main>
-      <footer class="footer">
-          <div class="content has-text-centered">
-              <p>
-                  <strong>Social Match Center</strong>
-              </p>
-          </div>
-      </footer>
+
   </div>
 
 </template>
@@ -94,5 +88,40 @@
         font-weight: bold;
         text-align: center;
     }
+    .card-content {
+        margin: 0;
+        padding: 0;
+    }
+    .content {
+        width: 100%;
+    }
+    .card-header {
+        background-color: #006699;
+        border-radius: 0;
 
+    }
+    .card-header-title {
+        padding: 0;
+        color: #fff;
+    }
+
+    #blink {
+        -webkit-animation: blink 1.4s linear infinite;
+        animation: blink 1.4s linear infinite;
+    }
+    @-webkit-keyframes blink {
+        50% { color: rgb(256, 0, 0); }
+        51% { color: rgba(256, 0, 0, 0); }
+        100% { color: rgba(256, 0, 0, 0); }
+    }
+    @keyframes blink {
+        50% { color: rgb(256, 0, 0); }
+        51% { color: rgba(256, 0, 0, 0); }
+        100% { color: rgba(256, 0, 0, 0); }
+    }
+    .footer {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+    }
 </style>

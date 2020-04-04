@@ -39,9 +39,21 @@ export default {
 
   },
   getters: {
-    item(state) {
-        return state.match;
-    }
+      item(state) {
+            return state.match;
+      },
+      progress(state){
+          if (state.match.match_status === '1t' || state.match.match_status === '2t' || state.match.match_status === 'ht')
+          return true
+      },
+      time (state) {
+          if (state.match.match_status === '1t' || state.match.match_status === '2t')
+              return true
+      },
+      fulltime (state) {
+          if (state.match.match_status === 'ft')
+              return true
+      }
   },
   actions: {
       loadMatch(store,id)  {

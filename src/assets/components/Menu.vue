@@ -49,6 +49,10 @@
 </script>
 
 <style >
+
+  .bm-menu {
+    background-color: #0e2141;
+  }
   .bm-burger-button {
     position: fixed;
     width: 36px;

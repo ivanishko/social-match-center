@@ -1,5 +1,11 @@
 <template>
     <div>
+        <b-message v-if="msg" title="Danger" type="is-danger" aria-close-label="Close message">
+            {{msg}}
+        </b-message>
+        <b-message v-if="isMsg" title="Danger" type="is-danger" aria-close-label="Close message">
+            {{isMsg}}
+        </b-message>
         <b-field label="Пользователь">
             <b-input
                      type="email"
@@ -25,8 +31,6 @@
 </template>
 
 <script>
-    import {mapActions} from 'vuex';
-    import {mapGetters} from 'vuex';
 
 
     export default {
@@ -51,6 +55,9 @@
                 {
                     this.msg = 'One or more fields are empty';
                 }
+            },
+            isMsg: function () {
+                return this.$store.getters.isMsg
             }
         }
     }

@@ -1,0 +1,53 @@
+import Vue from 'vue';
+import Router from 'vue-router';
+
+import Matches from '../assets/pages/Matches'
+import Match from '../assets/pages/Match'
+import Login from '../assets/pages/Login'
+import Tournaments from '../assets/pages/Tournaments'
+import Tournament from '../assets/pages/Tournament'
+import E404 from '../assets/pages/E404'
+Vue.use(Router);
+
+
+const routes = [
+  {
+      path: '/',
+      name: 'Main',
+      component: Matches
+  },
+  {
+    name: 'Matches',
+    path: '/matches',
+    component: Matches
+  },
+  {
+    name: 'Login',
+    path: '/login',
+    component: Login
+  },
+  {
+    name: 'Match',
+    path: '/match/:id',
+    component: Match
+  },
+  {
+    name: 'Tournaments',
+    path: '/tournaments',
+    component: Tournaments
+  },
+  {
+    name: 'Tournament',
+    path: '/tournament/:id',
+    component: Tournament
+  },
+  {
+    path: '*',
+    component: E404
+  }
+];
+
+export default  new Router({
+  routes,
+  mode: 'history'
+});

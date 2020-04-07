@@ -1,13 +1,12 @@
 <template>
   <div id="app">
+      <main id="page-wrap">
 
-    <Menu />
-
-    <main id="page-wrap">
-<!--      <Header msg="Social Match Center" />-->
-
+      <!--<Header msg="Social Match Center" />-->
       <div class="container">
+          <MenuB />
       <div class="row">
+
         <div class="col-lg-12 col-sm-12">
             <router-view>
 
@@ -28,6 +27,7 @@
 <script>
   import Header from "./assets/components/Header";
   import Menu from "./assets/components/Menu";
+  import MenuB from "./assets/components/MenuB";
   import 'bootstrap/dist/css/bootstrap.css'
   import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -35,7 +35,8 @@
   name: 'app',
     components: {
         Header,
-        Menu
+        Menu,
+        MenuB
     },
   data () {
     return {
@@ -48,19 +49,17 @@
 </script>
 
 <style lang="scss">
-    /*body {*/
-        /*margin: 0 auto;*/
-        /*max-width: 375px;*/
-    /*}*/
+    body {
+        background: #ebe8e8;
+    }
     #app {
-
-
-
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        margin-top: 60px;
         font-size: 12px;
         .container {
             margin: 0 auto;
+            background-color: #fff;
+            border-radius: 3px;
+            padding: 10px;
 
         }
 

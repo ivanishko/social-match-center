@@ -1,19 +1,12 @@
-import Vue from "vue";
-import Vuex from 'vuex';
-import axios from 'axios';
-import router from "vue-router";
-
-Vue.use(Vuex);
 const baseUrl = `http://localhost:3000`;
 export default {
     namespaced: true,
-
-
 
     state: {
         role: localStorage.getItem('role') || '',
         userId:localStorage.getItem('userId') || '',
         user: localStorage.getItem('user') || '',
+        msg: ''
 
 
     },
@@ -47,6 +40,7 @@ export default {
     getters: {
         isLoggedIn: state => !!state.role,
         isRole: state => state.role,
+        isMsg: state => state.msg
     },
     actions: {
         login({commit}, user) {
@@ -72,9 +66,9 @@ export default {
                                 localStorage.setItem('user', user);
                                 localStorage.setItem('userId', userInDB.id);
                                 commit('auth_success', userInDB);
-                                router.push('/')
+                                //this.$router.push('/');
                             } else {
-                                let msg = 'Wrong  password or  login';
+                                let msg = 'Wrong  password or login';
                                 commit('auth_error', msg);
                                 console.log('the user did not autorised!')
                             }
@@ -86,10 +80,21 @@ export default {
                         }
                     })
                     .catch(err => {
-                        commit('auth_error')
-                        console.log(err)
+                        let msg = 'Some error';
+                        commit('auth_error', msg);
+                        console.log('err',err)
                     })
             })
         },
+        logout({commit}){
+            return new Promise((resolve, reject) => {
+                commit('logout');
+                localStorage.removeItem('role');
+                localStorage.removeItem('user');
+                localStorage.removeItem('userId');
+                 resolve();
+
+            })
+        }
     }
 }

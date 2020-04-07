@@ -8,7 +8,7 @@ import 'buefy/dist/buefy.css';
 import "./assets/filters"
 
 
-import {router} from './assets/router.js'
+import router from './router'
 import {store} from './store/'
 
 import VueResource from 'vue-resource'

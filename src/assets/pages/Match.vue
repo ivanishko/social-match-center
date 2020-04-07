@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link :to="{name: 'matches'}">Back to match list</router-link>
+    <router-link :to="{name: 'Matches'}">Back to match list</router-link>
     <div class="match-item">
         <span class="team1 ">
           <p>{{matchItem.team1.name_translate}}</p>
@@ -53,7 +53,7 @@
 
     <b-tabs
             v-model="activeTab"
-            type="is-toggle"
+            :multiline="multiline"
             expanded
             :animated="false"
             :size="is-small"

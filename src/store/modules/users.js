@@ -1,4 +1,5 @@
 const baseUrl = `http://localhost:3000`;
+import axios from "axios/index";
 export default {
     namespaced: true,
 
@@ -66,7 +67,6 @@ export default {
                                 localStorage.setItem('user', user);
                                 localStorage.setItem('userId', userInDB.id);
                                 commit('auth_success', userInDB);
-                                //this.$router.push('/');
                             } else {
                                 let msg = 'Wrong  password or login';
                                 commit('auth_error', msg);

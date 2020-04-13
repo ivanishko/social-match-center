@@ -1,6 +1,6 @@
 <template>
   <Push>
-    <router-link v-for="item in items" id="item.home" :to="item.href">
+    <router-link v-for="item in items" id="item.home" :to="item.href" :key="item.id">
       <span>{{item.link}}</span>
     </router-link>
   </Push>

@@ -3,7 +3,7 @@
     <router-link :to="{name: 'Matches'}">Back to match list</router-link>
     <div class="match-item">
         <span class="team1 ">
-          <p>{{matchItem.team1.name_translate}}</p>
+          <p>{{matchItem.team1['name_translate']}}</p>
           <p>{{matchItem.team1.local}}</p>
         </span>
         <div class="count ">
@@ -34,7 +34,7 @@
           </div>
         </div>
       <span class="team2 ">
-        <p>{{matchItem.team2.name_translate}}</p>
+        <p>{{matchItem.team2['name_translate']}}</p>
         <p>{{matchItem.team2.local}}</p>
       </span>
     </div>
@@ -56,7 +56,7 @@
             :multiline="multiline"
             expanded
             :animated="false"
-            :size="is-small"
+            size="is-small"
     >
       <b-tab-item label="События">
         Lorem ipsum dolor sit amet.
@@ -64,9 +64,9 @@
 
       <b-tab-item label="Прогнозы">
         Lorem <br>
-        ipsum <br>
-        dolor <br>
-        sit <br>
+        ipsum
+        dolor
+        sit
         amet.
       </b-tab-item>
 

@@ -51,6 +51,8 @@
 <style lang="scss">
     body {
         background: #ebe8e8;
+      max-width: 350px;
+      margin: 0 auto;
     }
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;

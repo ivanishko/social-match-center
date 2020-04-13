@@ -10,7 +10,7 @@
         >
             <div class="p-1">
                 <router-link to="/"><img
-                        src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
+                        src="#"
                 /></router-link>
                 <b-menu>
                     <b-menu-list label="Menu">
@@ -37,7 +37,7 @@
         name: "MenuB",
         data() {
             return {
-                open: false,
+                open: false, // TODO Нужно сдеалат скрытие меню, добавить хук в роутинг 
                 overlay: true,
                 fullheight: true,
                 fullwidth: false,

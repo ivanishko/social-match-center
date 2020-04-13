@@ -42,7 +42,7 @@
                 password: ""
             }
         },
-        
+
         methods: {
             login: function () {
                 console.log('login!');
@@ -50,11 +50,14 @@
                 let password = this.password;
                 if (email && password) {
                     this.msg='';
-                    this.$store.dispatch('users/login', {email, password});
+                    console.log(this.$store.dispatch('users/login', {email, password}));
+
+
                 } else
                 {
                     this.msg = 'One or more fields are empty';
                 }
+               // this.$router.push('/'); //TODO Сделать нормальную линковку
             },
             isMsg: function () {
                 return this.$store.getters.isMsg

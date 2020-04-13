@@ -50,7 +50,6 @@ export default {
                 let email = user.email;
                 let password = user.password;
 
-
                 axios.get(baseUrl + `/users/?login=` + email)
                     .then(resp => {
                         if (resp.data.length !== 0) {

@@ -1,69 +1,66 @@
 <template>
-  <Push>
-    <router-link v-for="item in items" id="item.home" :to="item.href" :key="item.id">
-      <span>{{item.link}}</span>
-    </router-link>
-  </Push>
+    <section>
+        <b-sidebar
+                type="is-light"
+                :fullheight="fullheight"
+                :fullwidth="fullwidth"
+                :overlay="overlay"
+                :right="right"
+                :open.sync="open"
+        >
+            <div class="p-1">
+                <router-link to="/"><img
+                        src="#"
+                /></router-link>
+                <b-menu>
+                    <b-menu-list label="Menu">
+                        <b-menu-item icon="information-outline" label="Главная"  tag="router-link" to="/" ></b-menu-item>
+                        <b-menu-item icon="information-outline" label="Матчи"  tag="router-link" to="/matches" ></b-menu-item>
+                        <b-menu-item icon="information-outline" label="Турниры"  tag="router-link" to="/tournaments" ></b-menu-item>
+                    </b-menu-list>
+                    <b-menu-list label="Actions">
+                        <b-menu-item v-if="!isLogined" label="Login" tag="router-link" to="/login" ></b-menu-item>
+                        <b-menu-item v-else label="Logout" @click="logoutF"></b-menu-item>
+                    </b-menu-list>
+                </b-menu>
+            </div>
+        </b-sidebar>
+        <b-button @click="open = true">Меню</b-button>
+    </section>
 </template>
 
 <script>
-    import  {Push} from 'vue-burger-menu'
+    import {mapActions} from 'vuex';
+    import {mapGetters} from 'vuex';
 
     export default {
         name: "Menu",
         data() {
-          return {
-                items: [
-                      {
-                      "id": "home",
-                      "link": "Home",
-                      "href": "/"
-                    },
-                    {
-                        "id": "home",
-                        "link": "Matches",
-                        "href": "/matches"
-                    },
-                    {
-                        "id": "tournaments",
-                        "link": "Tournaments",
-                        "href": "/tournaments"
-                    },
-                    {
-                        "id": "login",
-                        "link": "Login",
-                        "href": "/login"
-                    },
-              ]
-          }
+            return {
+                open: false, // TODO Нужно сдеалат скрытие меню, добавить хук в роутинг 
+                overlay: true,
+                fullheight: true,
+                fullwidth: false,
+                right: false
+            }
         },
         computed: {
-          isLoginned() {
-              return true
-          }
+            ...mapGetters('users', {
+                isLogined: 'isLoggedIn'
+            })
         },
-        components: {
-            Push
+        methods: {
+            closeMenu() {
+                console.log('close');
+                this.open = false;
+            },
+            ...mapActions('users',{
+                logoutF: 'logout'
+            })
         }
     }
 </script>
 
-<style >
+<style scoped>
 
-  .bm-menu {
-    background-color: #0e2141;
-  }
-  .bm-burger-button {
-    position: fixed;
-    width: 36px;
-    height: 30px;
-    left: 24px;
-    top: 24px;
-    cursor: pointer;
-  }
-
-  .bm-cross {
-    background: #bdc3c7;
-    width: 36px;
-  }
 </style>

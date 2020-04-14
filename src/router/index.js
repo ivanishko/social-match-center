@@ -10,6 +10,8 @@ import E404 from '../assets/pages/E404'
 Vue.use(Router);
 
 
+
+
 const routes = [
   {
       path: '/',
@@ -47,7 +49,13 @@ const routes = [
   }
 ];
 
-export default  new Router({
+
+
+export const router = new Router({
   routes,
   mode: 'history'
 });
+
+router.afterEach((to, from) => {
+  console.log('afterEach')
+})

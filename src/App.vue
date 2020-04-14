@@ -4,7 +4,7 @@
 
       <!--<Header msg="Social Match Center" />-->
       <div class="container">
-          <MenuB />
+          <Menu />
       <div class="row">
 
         <div class="col-lg-12 col-sm-12">
@@ -27,16 +27,12 @@
 <script>
   import Header from "./assets/components/Header";
   import Menu from "./assets/components/Menu";
-  import MenuB from "./assets/components/MenuB";
-  import 'bootstrap/dist/css/bootstrap.css'
-  import 'bootstrap-vue/dist/bootstrap-vue.css'
-
+ 
   export default {
   name: 'app',
     components: {
         Header,
-        Menu,
-        MenuB
+        Menu
     },
   data () {
     return {

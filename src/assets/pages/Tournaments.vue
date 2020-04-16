@@ -2,9 +2,14 @@
   <div>
       <h1>{{name}}</h1>
       <div class="list-group match-items">
-        <router-link v-for="tournament in tournamentsLoad" :key="tournament.id" :to="'../tournament/' + tournament.id" class="list-group-item list-group-item-action match-item">
-          <span class="tournament"><p>{{tournament.reg_translate}}  {{tournament.name_translate}} {{tournament.loc_translate}}</p> </span>
-        </router-link>
+          <ul>
+              <li v-for="tournament in tournamentsLoad" :key="tournament.id" >
+                  <router-link  class="tournament" :to="'../tournament/' + tournament.id">
+                      {{tournament.reg_translate}} - {{tournament.name_translate}} {{tournament.loc_translate}}
+                  </router-link>
+              </li>
+          </ul>
+
       </div>
   </div>
 </template>

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Matches from '../assets/pages/Matches'
+import About from '../assets/pages/About'
 import Match from '../assets/pages/Match'
 import Login from '../assets/pages/Login'
 import Tournaments from '../assets/pages/Tournaments'
@@ -18,6 +19,11 @@ const routes = [
       name: 'Main',
       component: Matches
   },
+    {
+        path: '/about',
+        name: 'About',
+        component: About
+    },
   {
     name: 'Matches',
     path: '/matches',

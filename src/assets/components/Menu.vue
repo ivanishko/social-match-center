@@ -14,6 +14,12 @@
                 /></router-link>
                 <b-menu>
                     <b-menu-list label="Menu">
+                        <b-icon :type="{ 'is-success': isGreen }" icon="account"></b-icon>
+                        <b-icon
+
+                                icon="user"
+                                size="is-small">
+                        </b-icon>
                         <b-menu-item icon="information-outline" label="Главная"  tag="router-link" to="/" ></b-menu-item>
                         <b-menu-item icon="information-outline" label="Матчи"  tag="router-link" to="/matches" ></b-menu-item>
                         <b-menu-item icon="information-outline" label="Турниры"  tag="router-link" to="/tournaments" ></b-menu-item>

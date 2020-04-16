@@ -4,19 +4,9 @@
 
       <!--<Header msg="Social Match Center" />-->
       <div class="container">
-          <Menu />
-      <div class="row">
 
-        <div class="col-lg-12 col-sm-12">
-            <router-view>
-
-            </router-view>
-
-
-        </div>
-
-
-      </div>
+            <router-view></router-view>
+          <Footer/>
     </div>
     </main>
 
@@ -25,14 +15,12 @@
 </template>
 
 <script>
-  import Header from "./assets/components/Header";
-  import Menu from "./assets/components/Menu";
- 
+  import Footer from "./assets/components/Footer";
+
   export default {
   name: 'app',
     components: {
-        Header,
-        Menu
+        Footer
     },
   data () {
     return {
@@ -47,8 +35,8 @@
 <style lang="scss">
     body {
         background: #ebe8e8;
-      max-width: 350px;
-      margin: 0 auto;
+        max-width: 375px;
+        margin: 0 auto;
     }
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -58,10 +46,8 @@
             background-color: #fff;
             border-radius: 3px;
             padding: 10px;
-
+            height: calc(100vh + 100px);
         }
-
-
     }
 
     h1, h2 {
@@ -75,7 +61,6 @@
       padding: 0;
     }
     a {
-      color: #42b983;
     }
 
     .datetime {
@@ -93,13 +78,18 @@
         width: 100%;
     }
     .card-header {
-        background-color: #006699;
+        background-color: #6e7b99;
         border-radius: 0;
+        &:first-child {
+            margin-top: 10px ;
+        }
 
     }
     .card-header-title {
-        padding: 0;
+        padding-left: 10px;
         color: #fff;
+
+
     }
 
     #blink {

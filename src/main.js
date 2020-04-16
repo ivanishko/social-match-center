@@ -16,8 +16,6 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource);
 Vue.use(Buefy);
-//Vue.http.options.root = 'http://192.168.64.2/dashboard/api/';
-
 
 new Vue({
   el: '#app',

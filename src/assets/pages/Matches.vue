@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Matches</h1>
-
+    <h1>Матчи</h1>
+      <Calendar />
       <b-collapse
               class="card"
               animation="slide"
@@ -17,7 +17,12 @@
               <p class="card-header-title">
                   {{ collapse.title }}
               </p>
-              <a class="card-header-icon"></a>
+
+              <a class="card-header-icon">
+                  <b-icon
+                         >
+                  </b-icon>
+              </a>
           </div>
 
 
@@ -59,9 +64,14 @@
 
     import {mapGetters} from 'vuex';
     import {mapActions} from 'vuex';
+    import Calendar from "../components/Calendar";
+
 
     export default {
         name: "Matches",
+        components: {
+            Calendar
+        },
         data() {
             return {
                 matches: [],

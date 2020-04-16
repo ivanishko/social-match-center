@@ -3,7 +3,7 @@
     <router-link :to="{name: 'Matches'}">Back to match list</router-link>
     <div class="match-item">
         <span class="team1 ">
-          <p>{{matchItem.team1['name_translate']}}</p>
+          <p>{{matchItem.team1["name_translate"]}}</p>
           <p>{{matchItem.team1.local}}</p>
         </span>
         <div class="count ">
@@ -38,13 +38,22 @@
         <p>{{matchItem.team2.local}}</p>
       </span>
     </div>
-    <div v-show="editable" class="statuses">
-      <label for="not_started">Не начался<input id="not_started" v-model="match_status" type="radio" name="field" value="not_started" @click="checkS('not_started')"></label>
-      <label for="1time">1 тайм<input id="1time"  v-model="match_status" type="radio" name="field" value="1time" @click="checkS('1time')"></label>
-      <label for="halftime">Перерыв<input id="halftime" v-model="match_status" type="radio" name="field" value="halftime" @click="checkS('halftime111')"></label>
-      <label for="2time">2 тайм<input id="2time" v-model="match_status" type="radio" name="field" value="2time" @click="checkS('2time')"></label>
-      <label for="finished">Окончен<input id="finished" v-model="match_status" type="radio" name="field" value="finished" @click="checkS('finished')"></label>
+    <div v-show="editable">
+      <b-field>
+        <b-select placeholder="Статус" icon="earth" expanded>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+        </b-select>
+      </b-field>
+
     </div>
+    <!--<div v-show="editable" class="statuses">-->
+      <!--<label for="not_started">Не начался<input id="not_started" v-model="match_status" type="radio" name="field" value="not_started" @click="checkS('not_started')"></label>-->
+      <!--<label for="1time">1 тайм<input id="1time"  v-model="match_status" type="radio" name="field" value="1time" @click="checkS('1time')"></label>-->
+      <!--<label for="halftime">Перерыв<input id="halftime" v-model="match_status" type="radio" name="field" value="halftime" @click="checkS('halftime111')"></label>-->
+      <!--<label for="2time">2 тайм<input id="2time" v-model="match_status" type="radio" name="field" value="2time" @click="checkS('2time')"></label>-->
+      <!--<label for="finished">Окончен<input id="finished" v-model="match_status" type="radio" name="field" value="finished" @click="checkS('finished')"></label>-->
+    <!--</div>-->
     <div class="buttons">
       <b-button v-if="isRole == 'writer' && !editable"  @click="editClick" type="is-warning" expanded>Править</b-button>
       <b-button v-if="editable" type="is-success" @click="editClick" expanded>Готово</b-button>
@@ -52,7 +61,6 @@
 
 
     <b-tabs
-            v-model="activeTab"
             :multiline="multiline"
             expanded
             :animated="false"
@@ -101,7 +109,8 @@
                 editable: false,
                 match_status: "",
                 inEdit: false,
-                showBooks: false
+                showBooks: false,
+                multiline:true
             }
         },
         created() {

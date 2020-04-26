@@ -25,6 +25,7 @@
                         <b-menu-item icon="information-outline" label="Турниры"  tag="router-link" to="/tournaments" ></b-menu-item>
                     </b-menu-list>
                     <b-menu-list label="Actions">
+                        <b-icon :type="{ 'is-success': isGreen }" icon="account"></b-icon>
                         <b-menu-item v-if="!isLogined" label="Login" tag="router-link" to="/login" ></b-menu-item>
                         <b-menu-item v-else label="Logout" @click="logoutF"></b-menu-item>
                     </b-menu-list>
@@ -43,11 +44,12 @@
         name: "Menu",
         data() {
             return {
-                open: false, // TODO Нужно сдеалат скрытие меню, добавить хук в роутинг 
+                open: false, // TODO Нужно сдеалат скрытие меню, добавить хук в роутинг
                 overlay: true,
                 fullheight: true,
                 fullwidth: false,
-                right: false
+                right: false,
+                isGreen: true
             }
         },
         computed: {

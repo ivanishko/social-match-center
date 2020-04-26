@@ -20,7 +20,9 @@
 
               <a class="card-header-icon">
                   <b-icon
-                         >
+                    icon="sort"
+                    type="is-white"
+                    size="is-small">
                   </b-icon>
               </a>
           </div>
@@ -28,29 +30,36 @@
 
           <div class="match-items card-content">
               <div class="content">
-              <router-link v-for="match in matchesItems" :key="match.id" :to="'../match/' + match.id" class="match-item">
-                  <div class="forward">
-                      <p>Star</p>
-                  </div>
-                  <div class="teams">
-                      <div class="team1">
+                  <div v-for="match in matchesItems" :key="match.id" class="content__item">
+                    <div class="forward" @click="addToForward(match.id)">
+                      <b-icon
+                        icon="star"
+                        type="is-light"
+                      >
+                      </b-icon>
+                    </div>
+                    <router-link :to="'../match/' + match.id" class="match-item">
+                      <div class="teams">
+                        <div class="team1">
                           {{match.team1.name_translate}} {{match.team1.local}}
-                      </div>
-                      <div class="team2">
+                        </div>
+                        <div class="team2">
                           {{match.team2.name_translate}} {{match.team2.local}}
+                        </div>
                       </div>
+                      <div class="count" v-if="match.match_status != 'ns'">
+                        <p>{{match.team1["totalScore"]}}</p>
+                        <p>{{match.team2["totalScore"]}}</p>
+                      </div>
+                      <div class="count" v-else>
+                        <p>-</p>
+                        <p>-</p>
+                      </div>
+                      <div class="status" v-if="match.match_status != 'ns'"  :class="{intime : statusMatch(match.match_status)}" > {{match.match_status | formatStatusList }} </div>
+                      <div class="status" v-else>  {{match.datetime | formatTime}}  </div>
+                    </router-link>
                   </div>
-                  <div class="count" v-if="match.match_status != 'ns'">
-                      <p>{{match.team1["totalScore"]}}</p>
-                      <p>{{match.team2["totalScore"]}}</p>
-                  </div>
-                  <div class="count" v-else>
-                      <p>-</p>
-                      <p>-</p>
-                  </div>
-                  <div class="status" v-if="match.match_status != 'ns'"  :class="{intime : statusMatch(match.match_status)}" > {{match.match_status | formatStatusList }} </div>
-                  <div class="status" v-else>  {{match.datetime | formatTime}}  </div>
-              </router-link>
+
             </div>
           </div>
 
@@ -107,6 +116,9 @@
             statusMatch(status){
                 if (status == '1t' || status == '2t' || status == 'ht'   )
                 return true;
+            },
+            addToForward(id){
+                console.log('add!', id)
             }
         },
 
@@ -126,11 +138,25 @@
     color: #000;
   }
   .match-items {
-
     display: flex;
     flex-direction: column;
     align-items: baseline;
 
+    .content__item {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+
+    .status,.forward {
+      width: 10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .intime {
+      color: red;
+    }
   }
   .match-item {
     display: flex;
@@ -138,7 +164,7 @@
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid #2c3e50;
-      line-height: 2em;
+    line-height: 2em;
 
     .teams {
       display: flex;
@@ -166,16 +192,9 @@
 
 
      }
-    .status,.forward {
-      width: 10%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-      .intime {
-          color: red;
-      }
+
+
+
 
   }
   .count {

@@ -4,11 +4,13 @@
             <b-datepicker
                     v-model="date"
                     placeholder="Выберите день"
-                    icon="calendar-today"
+                    icon="calendar"
                     :month-names=monthNames
                     :first-day-of-week="1"
                     :day-names="dayNames"
-                    trap-focus>
+                    trap-focus
+                    :nearby-selectable-month-days="true"
+            >
             </b-datepicker>
         </b-field>
     </section>

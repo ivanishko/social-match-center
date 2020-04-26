@@ -9,10 +9,18 @@
         <div class="count ">
           <div v-show="editable" class="buttons">
             <div class="button_up">
-              <b-button class="edit_button btn btn-success" @click="up1">up</b-button>
+              <b-button class="edit_button btn btn-success" @click="up1">
+                <b-icon
+                  icon="chevron-up"
+                ></b-icon>
+              </b-button>
             </div>
             <div class="button_up">
-              <b-button class="edit_button btn btn-success" @click="up2">up</b-button>
+              <b-button class="edit_button btn btn-success" @click="up2">
+                <b-icon
+                  icon="chevron-up"
+                ></b-icon>
+              </b-button>
             </div>
           </div>
 
@@ -26,23 +34,34 @@
           </div>
           <div v-show="editable" class="buttons">
             <div class="button_down">
-              <b-button class="edit_button btn btn-danger"  :disabled="matchItem.team1['totalScore'] === 0" @click="down1">dw</b-button>
+              <b-button class="edit_button btn btn-danger"  :disabled="matchItem.team1['totalScore'] === 0" @click="down1">
+                <b-icon
+                  icon="chevron-down"
+                ></b-icon>
+              </b-button>
             </div>
             <div class="button_down">
-              <b-button class="edit_button btn btn-danger"  :disabled="matchItem.team2['totalScore'] === 0" @click="down2">dw</b-button>
+              <b-button class="edit_button btn btn-danger"  :disabled="matchItem.team2['totalScore'] === 0" @click="down2">
+                <b-icon
+                  icon="chevron-down"
+                ></b-icon>
+              </b-button>
             </div>
           </div>
         </div>
       <span class="team2 ">
-        <p>{{matchItem.team2['name_translate']}}</p>
+        <p>{{matchItem.team2["name_translate"]}}</p>
         <p>{{matchItem.team2.local}}</p>
       </span>
     </div>
     <div v-show="editable">
       <b-field>
-        <b-select placeholder="Статус" icon="earth" expanded>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
+        <b-select placeholder="Статус" icon="clock" expanded>
+          <option value="ns">Не начался</option>
+          <option value="1t">1 тайм</option>
+          <option value="ht">Перерыв</option>
+          <option value="2t">2 тайм</option>
+          <option value="ft">Окончен</option>
         </b-select>
       </b-field>
 

@@ -25,8 +25,6 @@
   data () {
     return {
         msg: 'Social match center',
-
-
     }
   }
 }
@@ -37,6 +35,7 @@
         background: #ebe8e8;
         max-width: 375px;
         margin: 0 auto;
+        border: 1px solid #bebebe;
     }
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;

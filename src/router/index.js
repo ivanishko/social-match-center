@@ -10,9 +10,6 @@ import Tournament from '../assets/pages/Tournament'
 import E404 from '../assets/pages/E404'
 Vue.use(Router);
 
-
-
-
 const routes = [
   {
       path: '/',
@@ -54,8 +51,6 @@ const routes = [
     component: E404
   }
 ];
-
-
 
 export const router = new Router({
   routes,

@@ -133,7 +133,6 @@
             }
         },
         created() {
-            console.log(3);
             this.$store.dispatch('match/loadMatch',this.id);
         },
         computed: {

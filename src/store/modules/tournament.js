@@ -7,11 +7,7 @@ export default {
   state: {
     tournament: {}
   },
-  mutations: {
-    initTournament(state, data){
-      state.tournament = data;
-    },
-  },
+
 
   getters: {
     item(state) {
@@ -34,9 +30,14 @@ export default {
         .then(response => {
           //console.log(response)
           console.log(response.data);
-          store.commit('initTournament',response.data)
+          store.commit('INIT_TOURNAMENT',response.data)
         })
     },
-  }
+  },
+  mutations: {
+    INIT_TOURNAMENT(state, data){
+      state.tournament = data;
+    },
+  },
 
 }

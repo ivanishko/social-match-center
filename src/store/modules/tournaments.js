@@ -4,14 +4,10 @@ import axios from "axios/index";
 export default {
   namespaced: true,
 
-state : {
-    tournaments: []
-  },
-    mutations: {
-        loadTournaments(state, data) {
-            state.tournaments = data;
-        }
-  },
+    state : {
+        tournaments: []
+    },
+
     getters: {
         tournamentItems: (state) => state.tournaments
   },
@@ -21,8 +17,14 @@ state : {
             axios.get(`http://localhost:3000/tournaments`)
                 .then(response => {
                     //console.log(response)
-                    store.commit('loadTournaments',response.data)
+                    store.commit('LOAD_TOURNAMENTS',response.data)
                 })
         },
-  }
+    },
+
+    mutations: {
+        LOAD_TOURNAMENTS(state, data) {
+            state.tournaments = data;
+        }
+    },
 }

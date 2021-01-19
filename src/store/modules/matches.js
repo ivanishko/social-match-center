@@ -7,11 +7,7 @@ export default {
   state : {
     matches: []
   },
-  mutations: {
-    loadMatches(state, data) {
-      state.matches = data;
-    },
-},
+
   getters: {
       matchesMap(state) {
         let matchesMap = {};
@@ -29,29 +25,32 @@ export default {
       return getters.matchesMap[id];
   },
 
-},
+  },
 
   actions: {
     initMatches(store) {
-        //store.commit('clearItems');
-            axios.get(`http://localhost:3000/matches`)
-                .then(response => {
-                  //console.log(response)
-                  store.commit('loadMatches',response.data)
-                })
+      //store.commit('clearItems');
+      axios.get(`http://localhost:3000/matches`)
+          .then(response => {
+            //console.log(response)
+            store.commit('LOAD_MATCHES', response.data)
+          })
     },
 
+    upPoint1(store, item){
+      store.commit('upPoint1',item);
+    }
+    // upPoint2:
+    // downPoint1:
+    // downPoint2:
+    // checkStatus:
+
+  },
 
 
-
-
-
-  upPoint1(store, item){
-    store.commit('upPoint1',item);
-  }
-  // upPoint2:
-  // downPoint1:
-  // downPoint2:
-  // checkStatus:
-}
+  mutations: {
+    LOAD_MATCHES(state, data) {
+      state.matches = data;
+    },
+  },
 }

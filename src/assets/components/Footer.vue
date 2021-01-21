@@ -7,8 +7,8 @@
             <router-link active-class="active-link" :to="{name: 'Tournaments'}">Турниры</router-link>
             <router-link  v-if="!isLogined"  active-class="active-link" :to="{name: 'Login'}">Войти</router-link>
             <router-link  v-else active-class="active-link" :to="{name: 'Login'}">
-              <b-icon :type="{ 'is-primary': isLogined  }" icon="user"></b-icon>
-              <br>
+<!--              <b-icon :type="{ 'is-primary': isLogined  }" icon="user"></b-icon>-->
+<!--              <br>-->
               Аккаунт
             </router-link>
         </nav>

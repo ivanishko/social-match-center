@@ -6,7 +6,7 @@
           <p>{{matchItem.team1["name_translate"]}}</p>
           <p>{{matchItem.team1.local}}</p>
         </span>
-        <div class="count ">
+        <div class="count">
           <div v-show="editable" class="buttons">
             <div class="button_up">
               <b-button class="edit_button btn btn-success" @click="up1">
@@ -56,7 +56,7 @@
     </div>
     <div v-show="editable">
       <b-field>
-        <b-select placeholder="Статус" icon="clock" expanded>
+        <b-select placeholder="Статус" icon="clock" v-model="match_status" expanded>
           <option value="ns">Не начался</option>
           <option value="1t">1 тайм</option>
           <option value="ht">Перерыв</option>
@@ -66,13 +66,6 @@
       </b-field>
 
     </div>
-    <!--<div v-show="editable" class="statuses">-->
-      <!--<label for="not_started">Не начался<input id="not_started" v-model="match_status" type="radio" name="field" value="not_started" @click="checkS('not_started')"></label>-->
-      <!--<label for="1time">1 тайм<input id="1time"  v-model="match_status" type="radio" name="field" value="1time" @click="checkS('1time')"></label>-->
-      <!--<label for="halftime">Перерыв<input id="halftime" v-model="match_status" type="radio" name="field" value="halftime" @click="checkS('halftime111')"></label>-->
-      <!--<label for="2time">2 тайм<input id="2time" v-model="match_status" type="radio" name="field" value="2time" @click="checkS('2time')"></label>-->
-      <!--<label for="finished">Окончен<input id="finished" v-model="match_status" type="radio" name="field" value="finished" @click="checkS('finished')"></label>-->
-    <!--</div>-->
     <div class="buttons">
       <b-button v-if="isRole == 'writer' && !editable"  @click="editClick" type="is-warning" expanded>Править</b-button>
       <b-button v-if="editable" type="is-success" @click="editClick" expanded>Готово</b-button>
@@ -156,14 +149,32 @@
                 up2: 'upPoint2',
                 down1: 'downPoint1',
                 down2: 'downPoint2',
-                checkS: 'checkStatus',
-                load: 'loadMatch'
+                editStatus: 'editStatus',
+                load: 'loadMatch',
+                toSave: 'toSaveMatch'
+
             }),
 
             editClick: function () {
-                this.editable = !this.editable;
+                this.editable = !this.editable
+
+                let match = {
+                  total1: this.matchItem.team1.totalScore,
+                  total2: this.matchItem.team2.totalScore,
+                  match_status: this.match_status,
+                }
+                if (!this.editable) {
+                this.toSave(match)
+              }
+
+
             }
+        },
+      watch: {
+        match_status: function () {
+          console.log('this.match_status',this.match_status)
         }
+      }
     }
 </script>
 

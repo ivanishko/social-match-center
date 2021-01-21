@@ -27,45 +27,66 @@ export default {
       },
 
       actions: {
-          loadMatch(store,id)  {
-              axios.get(`http://localhost:3000/matches/` + id)
-                  .then(response => {
-                      //console.log(response)
-                      console.log(response.data);
-                      store.commit('INITMATCH',response.data)
-                  })
+        loadMatch(store,id)  {
+          axios.get(`http://localhost:3000/matches/` + id)
+              .then(response => {
+                  //console.log(response)
+                  console.log(response.data);
+                  store.commit('INITMATCH',response.data)
+              })
           },
+          upPoint1(store, item){
+              store.commit('UP_POINT1',item);
+          },
+          upPoint2(store, item){
+              store.commit('UP_POINT2',item);
+          },
+          downPoint1(store, item){
+              store.commit('DOWN_POINT1',item);
+          },
+          downPoint2(store, item){
+              store.commit('DOWN_POINT2',item);
+          },
+          editStatus(store,item){
+              store.commit('EDIT_STATUS',item);
+          },
+          toSaveMatch(store,payload){
+              store.commit('TO_SAVE_MATCH',payload);
+          }
 
-            checkStatus() {
-              console.log('checkStatus')
-            }
+
       },
 
     mutations: {
         INITMATCH(state, data){
-            state.match = data;
+            state.match = data
         },
 
-        UPPOINT1(state) {
-            state.match.team1.totalScore++;
+        UP_POINT1(state) {
+            state.match.team1.totalScore++
         },
-        UPPOINT2(state){
-            state.match.team2.totalScore++;
+        UP_POINT2(state){
+            state.match.team2.totalScore++
         },
-        DOWNPOINT1(state){
+        DOWN_POINT1(state){
             if (state.match.team1["totalScore"] !== 0){
-                state.match.team1.totalScore--;
+                state.match.team1.totalScore--
             }
         },
-        DOWNPOINT2(state){
+        DOWN_POINT2(state){
             if (state.match.team2["totalScore"] !== 0){
-                state.match.team2.totalScore--;
+                state.match.team2.totalScore--
             }
         },
-        CHECKSTATUS(status) {
+        EDIT_STATUS(state,status) {
+            console.log('status', status)
             state.match.match_status  = status;
-            console.log(state.match .match_status );
+            console.log(state.match.match_status )
 
+        },
+        TO_SAVE_MATCH(state, payload){
+            console.log('payload', payload)
+            state.match.match_status  = payload.match_status
         }
 
     }

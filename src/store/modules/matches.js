@@ -37,13 +37,7 @@ export default {
           })
     },
 
-    upPoint1(store, item){
-      store.commit('upPoint1',item);
-    }
-    // upPoint2:
-    // downPoint1:
-    // downPoint2:
-    // checkStatus:
+
 
   },
 
@@ -52,5 +46,6 @@ export default {
     LOAD_MATCHES(state, data) {
       state.matches = data;
     },
+
   },
 }

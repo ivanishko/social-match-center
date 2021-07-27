@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+const PORT = '3004'
 
 export default {
   namespaced: true,
@@ -30,7 +30,7 @@ export default {
   actions: {
     initMatches(store) {
       //store.commit('clearItems');
-      axios.get(`http://localhost:3000/matches`)
+      axios.get(`http://localhost:`+ `${PORT}` + `/matches`)
           .then(response => {
             //console.log(response)
             store.commit('LOAD_MATCHES', response.data)

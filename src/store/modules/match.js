@@ -1,5 +1,6 @@
 import axios from "axios";
-const PORT = '3004'
+import {PORT} from './constants';
+
 
 export default {
   namespaced: true,
@@ -28,7 +29,7 @@ export default {
 
       actions: {
         loadMatch(store,id)  {
-          axios.get(`http://localhost:` + `${PORT}` + `/matches/` + id)
+          axios.get(`http://localhost:${PORT}/matches/` + id)
               .then(response => {
                   //console.log(response)
                   console.log(response.data);

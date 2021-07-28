@@ -1,4 +1,5 @@
 import axios from "axios/index";
+import {PORT} from './constants';
 
 
 export default {
@@ -14,7 +15,7 @@ export default {
     actions: {
         initTournaments(store) {
             //store.commit('clearItems');
-            axios.get(`http://localhost:3000/tournaments`)
+            axios.get(`http://localhost:${PORT}/tournaments`)
                 .then(response => {
                     //console.log(response)
                     store.commit('LOAD_TOURNAMENTS',response.data)

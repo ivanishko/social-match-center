@@ -1,4 +1,4 @@
-const baseUrl = `http://localhost:3001`;
+import {PORT} from './constants';
 import axios from "axios/index";
 export default {
     namespaced: true,

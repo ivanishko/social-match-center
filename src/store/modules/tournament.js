@@ -1,4 +1,5 @@
 import axios from "axios";
+import {PORT} from './constants';
 
 
 export default {
@@ -26,7 +27,7 @@ export default {
 
   actions: {
     loadTournament(store,id)  {
-      axios.get(`http://localhost:3000/tournaments/` + id)
+      axios.get(`http://localhost:${PORT}/tournaments/` + id)
         .then(response => {
           //console.log(response)
           console.log(response.data);

@@ -1,5 +1,6 @@
 import axios from 'axios';
-const PORT = '3004'
+import {PORT} from './constants';
+
 
 export default {
   namespaced: true,
@@ -13,7 +14,7 @@ export default {
         let matchesMap = {};
         for (let i = 0; i < state.matches.length; i++) {
           let match = state.matches[i];
-          matchesMap[match.id] = match;
+          matchesMapgi[match.id] = match;
         }
         return matchesMap;
     },
@@ -30,7 +31,7 @@ export default {
   actions: {
     initMatches(store) {
       //store.commit('clearItems');
-      axios.get(`http://localhost:`+ `${PORT}` + `/matches`)
+      axios.get(`http://localhost:${PORT}/matches`)
           .then(response => {
             //console.log(response)
             store.commit('LOAD_MATCHES', response.data)

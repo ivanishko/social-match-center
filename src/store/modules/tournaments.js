@@ -15,7 +15,7 @@ export default {
     actions: {
         initTournaments(store) {
             //store.commit('clearItems');
-            axios.get(`http://localhost:${PORT}/tournaments`)
+            axios.get(`${BASE_URL}/tournaments`)
                 .then(response => {
                     //console.log(response)
                     store.commit('LOAD_TOURNAMENTS',response.data)

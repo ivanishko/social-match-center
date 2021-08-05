@@ -1,5 +1,5 @@
 import axios from "axios";
-import {PORT} from './constants';
+import {BASE_URL} from './constants';
 
 
 export default {
@@ -29,9 +29,8 @@ export default {
 
       actions: {
         loadMatch(store,id)  {
-          axios.get(`http://localhost:${PORT}/matches/` + id)
+          axios.get(`${BASE_URL}/matches/` + id)
               .then(response => {
-                  //console.log(response)
                   console.log(response.data);
                   store.commit('INITMATCH',response.data)
               })
@@ -51,8 +50,8 @@ export default {
           editStatus(store,item){
               store.commit('EDIT_STATUS',item);
           },
-          toSaveMatch(store,payload){
-              store.commit('TO_SAVE_MATCH',payload);
+          toSaveMatch(store, payload){
+              store.commit('TO_SAVE_MATCH', payload);
           }
 
 

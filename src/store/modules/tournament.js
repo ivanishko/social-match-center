@@ -27,7 +27,7 @@ export default {
 
   actions: {
     loadTournament(store,id)  {
-      axios.get(`http://localhost:${PORT}/tournaments/` + id)
+      axios.get(`${BASE_URL}/tournaments/` + id)
         .then(response => {
           //console.log(response)
           console.log(response.data);

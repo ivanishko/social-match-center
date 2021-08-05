@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {PORT} from './constants';
+import {BASE_URL} from './constants';
 
 
 export default {
@@ -31,7 +31,7 @@ export default {
   actions: {
     initMatches(store) {
       //store.commit('clearItems');
-      axios.get(`http://localhost:${PORT}/matches`)
+      axios.get(`${BASE_URL}/matches`)
           .then(response => {
             //console.log(response)
             store.commit('LOAD_MATCHES', response.data)

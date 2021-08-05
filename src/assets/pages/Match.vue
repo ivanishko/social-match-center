@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link :to="{name: 'Matches'}">Back to match list</router-link>
+    <router-link :to="{name: 'Matches'}">К списку матчей</router-link>
     <div class="match-item">
         <span class="team1 ">
           <p>{{matchItem.team1["name_translate"]}}</p>
